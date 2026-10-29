@@ -1,0 +1,127 @@
+using System;
+using System.Security.AccessControl;
+
+namespace Lanchonete
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+
+            static double FaturamentoSemana(double n, double p)
+            {
+                double soma = n * p;
+                return soma;
+            }
+
+
+
+
+
+
+
+            Console.WriteLine("===== LANCHONETE SENAC =====");
+
+            Console.WriteLine("1 - Ver cardápio");
+            Console.WriteLine("2 - Registrar venda");
+            Console.WriteLine("3 - Relatorio por produto");
+            Console.WriteLine("4 - Relatorio por dia");
+            Console.WriteLine("5 - Resumo da semana");
+            Console.WriteLine("0 - sair");
+
+
+            Console.Write("Escolha sua opção: ");
+            int opcao = int.Parse(Console.ReadLine());
+
+
+            switch (opcao)
+            {
+
+                case 1:
+                    Console.WriteLine("1 - Pão: 0.50");
+                    Console.WriteLine("2 - Café: 7,00");
+                    Console.WriteLine("3 - Fatia de bolo: 6,50");
+                    Console.WriteLine("4 - Suco: 12,00 ");
+                    Console.WriteLine("5 - Vitamina: 15,00");
+
+                    Console.Write("Escolha seu produto: ");
+                    int produto = int.Parse(Console.ReadLine());
+
+                    Console.Write("Digite a quantidade do produto: ");
+                    int quantidade = int.Parse(Console.ReadLine());
+
+
+                    switch (produto)
+                    {
+                        case 1:
+                            Console.WriteLine($"Voce selecionou pão e {quantidade} unidades!");
+                            break;
+
+                        case 2:
+                            Console.WriteLine($"Voce selecionou Café e {quantidade} unidades!");
+                            break;
+
+                        case 3:
+                            Console.WriteLine($"Voce selecionou Fatia de bolo e {quantidade} unidades!");
+                            break;
+
+                        case 4:
+                            Console.WriteLine($"Voce selecionou suco e {quantidade} unidades! ");
+                            break;
+                        case 5:
+                            Console.WriteLine($"Voce selecionou vitamina e {quantidade} unidades!");
+                            break;
+                        default:
+                            Environment.Exit(0);
+                            break;
+
+                    }
+                    break;
+
+            }
+             switch (opcao) {  
+
+
+                case 2:
+                    Console.WriteLine("Venda registrada!");
+                    break;
+
+
+
+                case 3:
+
+                    break;
+
+
+
+
+                case 4:
+
+                    break;
+
+
+
+
+
+                case 5:
+
+                    Console.Write("Digite quantos produtos foram comprados: ");
+                    int quantidade = int.Parse(Console.ReadLine());
+
+
+                    int[] numeros = new int[quantidade];
+
+                    for (int i = 0; i < numeros.Length; i++)
+                    {
+                        Console.WriteLine("Digite o preço dos produtos: ");
+                        numeros[i] = int.Parse(Console.ReadLine());
+
+                        double faturamento = FaturamentoSemana(quantidade, numeros[i]);
+                        Console.WriteLine(faturamento);
+                        break;
+                    }
+                    break;
+                }
+            }
+        }
+    }
