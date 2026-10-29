@@ -20,3 +20,46 @@ vitamina	 |20 |18 |22  |24 |30 |189  |
 me dê quantidades de venda para cada produto durante uma semana
 
 - 
+================== TOTAL DIA ======================
+
+using System;
+using System.Net.Http.Headers;
+using System.Security.AccessControl;
+using System.Xml;
+
+namespace Lanchonete
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+
+            static int ResumoDia(int n, int p) 
+            { 
+                int soma = n * p;
+                return soma;
+            }
+
+            Console.WriteLine("Digite o dia da semana (sem sabado e domingo): ");
+            string semana = Console.ReadLine();
+
+            Console.WriteLine("Digite para saber quantos produtos foram vendidos (1 a 5): ");
+            int quantidade = int.Parse(Console.ReadLine());
+
+            string[] nomes2 = new string[quantidade];
+
+
+
+            for (int i = 0; i < nomes2.Length; i++)
+            {
+                Console.WriteLine("Digite o nome dos produtos: ");
+                nomes2[i] = Console.ReadLine();
+            }
+
+            
+                
+
+        }
+    }
+}
+
