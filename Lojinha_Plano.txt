@@ -1,0 +1,22 @@
+===== LOJA DOS SONHOS =====
+
+- Produtos: pão, café, fatia de bolo, suco, vitamina
+
+- Preços: R$0.50, R$7.00, R$6.50, R$12.00, R$15.00
+
+		 |Seg|Ter|Quar|Qui|Sex|TOTAL|
+pão		 |250|230|240 |260|300|2030 |
+café		 |65 |60 |70  |28 |32 |580  |
+fatia de bolo	 |25 |22 |28  |30 |40 |250  |
+suco		 |30 |28 |32  |35 |45 |285  |
+vitamina	 |20 |18 |22  |24 |30 |189  |
+
+
+
+===== LISTA DE PROMPTS =====
+
+- estou fazendo um projeto que possui uma padaria que vende: pão, café, fatia de bolo, suco, vitamina
+
+me dê quantidades de venda para cada produto durante uma semana
+
+- 
