@@ -1,5 +1,6 @@
 using System;
 using System.Security.AccessControl;
+using System.Security.Principal;
 
 namespace Lanchonete
 {
@@ -8,6 +9,12 @@ namespace Lanchonete
         static void Main(string[] args)
         {
 
+            string[] nomes = { "Pão", "Café", "Fatia de bolo", "Suco", "Vitamina" };
+            double[] precos = { 0.50, 7.00, 6.50, 12.00, 15.00 };
+            string[] dias = { "Segunda", "Terça", "Quarta", "Quinta", "Sexta" };
+            int[] vendidos = new int[nomes.Length];
+            int quantidade = 0;
+
             static double FaturamentoSemana(double n, double p)
             {
                 double soma = n * p;
@@ -15,8 +22,8 @@ namespace Lanchonete
             }
 
 
-
-
+         
+       
 
 
 
@@ -37,91 +44,91 @@ namespace Lanchonete
             switch (opcao)
             {
 
-                case 1:
-                    Console.WriteLine("1 - Pão: 0.50");
-                    Console.WriteLine("2 - Café: 7,00");
-                    Console.WriteLine("3 - Fatia de bolo: 6,50");
-                    Console.WriteLine("4 - Suco: 12,00 ");
-                    Console.WriteLine("5 - Vitamina: 15,00");
+                case 1:// Feito por Tomás (Serve para mostrar os produtos e preços de um array em formato de lista atraves de um for)
+                    for (int i = 0; i < nomes.Length; i++)
+                    {
+                        Console.WriteLine($" {i + 1} - {nomes[i]} R${precos[i]}");
 
+                    }
                     Console.Write("Escolha seu produto: ");
                     int produto = int.Parse(Console.ReadLine());
 
-                    Console.Write("Digite a quantidade do produto: ");
-                    int quantidade = int.Parse(Console.ReadLine());
+                    Console.Write("Digite a quantidade: ");
+                    quantidade = int.Parse(Console.ReadLine());
+
+                    Console.WriteLine($"Voce selecionou {nomes[produto - 1]} e {quantidade} unidades!"); // Aqui ele puxa o nome do array de acordo com produto atraves da opção que voce escolheu acima 
+                    break;
 
 
-                    switch (produto)
+
+
+                case 4: 
+
+                    for (int i = 0; i < dias.Length; i++)
                     {
-                        case 1:
-                            Console.WriteLine($"Voce selecionou pão e {quantidade} unidades!");
-                            break;
-
-                        case 2:
-                            Console.WriteLine($"Voce selecionou Café e {quantidade} unidades!");
-                            break;
-
-                        case 3:
-                            Console.WriteLine($"Voce selecionou Fatia de bolo e {quantidade} unidades!");
-                            break;
-
-                        case 4:
-                            Console.WriteLine($"Voce selecionou suco e {quantidade} unidades! ");
-                            break;
-                        case 5:
-                            Console.WriteLine($"Voce selecionou vitamina e {quantidade} unidades!");
-                            break;
-                        default:
-                            Environment.Exit(0);
-                            break;
+                        Console.WriteLine($"{i + 1} - {nomes[i]} "); // Feito por Tomás (aqui é a msm parada que la em cima. Mostra os produtos em forma de lista para o usuario poder escolher)
+                       
 
                     }
-                    break;
+                    Console.WriteLine("Digite o produto que deseja: ");
+                    int produtos2 = int.Parse(Console.ReadLine());
 
-            }
-             switch (opcao) {  
+                    for (int i = 0; i < dias.Length; i++) // Aqui percorre pelo o array de dias da mesma forma do nome KKKKKKKKKKK é praticamente tudo o mesmo esquema. 
+                    {
+                        Console.WriteLine($"{i + 1} - {dias[i]}");
+                    }
+                    Console.WriteLine("Digite o dia que deseja: ");
+                    int dias2 = int.Parse(Console.ReadLine());
 
-
-                case 2:
-                    Console.WriteLine("Venda registrada!");
-                    break;
-
-
-
-                case 3:
-
-                    break;
+                    Console.Write("Digite a quantia do dia: ");
+                    int quantiDia = int.Parse(Console.ReadLine());
 
 
+                    Console.WriteLine($"Venda registrada: {quantiDia} X {nomes[produtos2 - 1]} na {dias[dias2 - 1]}");
 
-
-                case 4:
 
                     break;
-
-
-
-
-
+                    
+                  
                 case 5:
 
-                    Console.Write("Digite quantos produtos foram comprados: ");
-                    int quantidade = int.Parse(Console.ReadLine());
+                    // feito por Tomás (Aqui é so para "Armazenar" um valor numero em uma variavel para poder colocar um valor nela mais para frente)
+                    double total = 0;
+                    double maior = 0;
+                    string ProdutoMais = "";
 
-
-                    int[] numeros = new int[quantidade];
-
-                    for (int i = 0; i < numeros.Length; i++)
+                    for (int i = 0; i < nomes.Length; i++)
                     {
-                        Console.WriteLine("Digite o preço dos produtos: ");
-                        numeros[i] = int.Parse(Console.ReadLine());
+                        Console.Write($"Digite a quantia do {nomes[i]}: ");
+                        int quantia = int.Parse(Console.ReadLine());
 
-                        double faturamento = FaturamentoSemana(quantidade, numeros[i]);
-                        Console.WriteLine(faturamento);
-                        break;
+                        double faturamento = FaturamentoSemana(quantia, precos[i]);  // aqui é a função la de cima, ela puxa a quantia que o usuario digitou e o for percorre pelo o array de preços la de cima, multiplicando pela quantia.
+                        total += faturamento;
+
+                        if (faturamento  > maior) 
+                        {
+                            maior = faturamento;
+                            ProdutoMais = nomes[i];
+                        } // esse if serve para falar que se o faturamento for maior que a variavel maior. ela guarda o valor do maior no faturamento e o valor do ProdutoMais em nomes.
                     }
+                    Console.WriteLine($"faturamento total da semana: R${total}");
+                    Console.WriteLine($"Produto mais vendido: {ProdutoMais} R${maior}");
+
+
+               
                     break;
-                }
+                    
+
+         
+
+            
+
+            } while (opcao == 0)
+            {
+                Console.WriteLine("Saindo.");
+                opcao++;
             }
-        }
+        } 
     }
+}
+                   
